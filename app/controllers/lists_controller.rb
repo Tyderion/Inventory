@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @lists = List.all
+    @lists = List.paginate(:page => params[:page])
   end
 
   def show
@@ -11,6 +11,11 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.users << current_user
+  end
+
+  def filtered
+    @lists = List.paginate(:page => params[:page])
   end
 
   def create

@@ -13,8 +13,10 @@
   </thead>
   <tbody>
 <% @list.users.each do |item| %>
-  <td><%= user.name %></td>
-  <td><%= user.username %></td>
+<tr>
+  <td><%= item.name %></td>
+  <td><%= item.username %></td>
+</tr>
 <% end %>
 </tbody>
 </table>
@@ -24,16 +26,32 @@
     <th>Amount</th>
   </thead>
   <tbody>
-<% @list.Listitems.each do |item| %>
-  <td><%= Item.find(item.item_id).name %></td>
-  <td><%= item.amount %></td>
+<% @list.Listitems.each do |l_item| %>
+<tr>
+  <td><%= Item.find(l_item.item_id).name %></td>
+  <td><%= l_item.amount %>     
+    <%= link_to "+", change_amount_path(id: l_item.id, change: 1), class: "increment", method: :post %>
+    <%= link_to "-", change_amount_path(id: l_item.id, change: -1), method: :post, class: "decrement"%>
+  </td>
+  </tr>
 <% end %>
 </tbody>
 </table>
 
-<div> Add Items to list
+<div class="toggle_list"><div class= "togglebutton"></div>
+  Add Items to list </div> <!-- toggle -->
+<div class="toggled_list", hidden='true'> 
   <%= render partial: 'listitems/form' %>
 </div>
+
+
+<div class="toggle_user">
+ Manage Users <div class= "togglebutton"></div>
+ </div> <!-- toggle -->
+<div class="toggled_user", hidden='true'> 
+  <%= render partial: 'lists/modify_users' %>
+</div>
+
 
 
 </dl>

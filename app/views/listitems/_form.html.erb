@@ -1,10 +1,17 @@
 <%= semantic_form_for @listitem do |f| %>
 <%= f.inputs do %>
   <% if @listitem.list_id.nil? %>
-    <%= f.input :list %>
+    	<%= f.input :list %>
+    <% else %>
+    	<%= f.input :list_id, as: :hidden %>
     <% end %>
-  <%= f.input :item %>
+    <% if @list.nil? %>
+    <%= f.input :item %>
+    <% else %>
+  <%= f.input :item, collection: Item.all-@list.items %>
+  <% end %>
   <%= f.input :amount %>
   <% end %>
 <%= f.actions %>
 <% end %>
+

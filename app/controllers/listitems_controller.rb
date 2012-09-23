@@ -14,7 +14,7 @@ class ListitemsController < ApplicationController
   def create
     @listitem = Listitem.new(params[:listitem])
     if @listitem.save
-      redirect_to @listitem, :notice => "Successfully created listitem."
+      redirect_to list_path(List.find(@listitem.list_id)), :notice => "Successfully created listitem."
     else
       render :action => 'new'
     end
@@ -38,4 +38,17 @@ class ListitemsController < ApplicationController
     @listitem.destroy
     redirect_to listitems_url, :notice => "Successfully destroyed listitem."
   end
+
+  def change_amount
+    @listitem = Listitem.find(params[:id])
+    #debugger
+    @listitem.amount= @listitem.amount +  params[:change].to_i
+    if @listitem.amount <0
+      @listitem.amount = 0
+    end
+    @listitem.save
+    redirect_to :back
+  end
+
+  
 end

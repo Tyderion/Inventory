@@ -9,7 +9,7 @@
 #
 
 class List < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :user_ids, :users
 
   has_many :Listitems
   has_many :items, through: :Listitems

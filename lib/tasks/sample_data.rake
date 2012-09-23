@@ -12,5 +12,15 @@ namespace :db do
    username: "Poochie",
    password: "foobar",
    password_confirmation: "foobar")
+
+
+     Item.create(name: "Aktivkohle")
+     Item.create(name: "Brennsprit")
+     Item.create(name: "Papes")
+     Item.create(name: "Tabak")
+     Item.create(name: "Siebchen klein")
+     Item.create(name: "Siebchen mittel")
   end
+
+  
 end

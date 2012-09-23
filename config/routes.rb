@@ -9,7 +9,8 @@ Inventory::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "lists#index"
+  root :to => "lists#filtered"
+  post "change_amount", to: "listitems#change_amount"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -11,8 +11,9 @@
     </tr>
   </thead>
   <tbody>
+    <%= will_paginate @lists %>
     <% @lists.each do |list| %>
-      <% if list.users.include? current_user %>
+      <% #if list.users.include? current_user %>
       <tr>
         <td><%= link_to list.name, list_path(list)%></td>
         <td><%=l list.created_at %></td>
@@ -26,7 +27,7 @@
                       :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
-      <% end %>
+      <%# end %>
     <% end %>
   </tbody>
 </table>
