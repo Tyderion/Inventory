@@ -1,0 +1,20 @@
+<% title "Listitem" %>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @listitem.amount %>
+</p>
+<p>
+  <strong>List:</strong>
+  <%= @listitem.list_id %>
+</p>
+<p>
+  <strong>Item:</strong>
+  <%= @listitem.item_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_listitem_path(@listitem) %> |
+  <%= link_to "Destroy", @listitem, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", listitems_path %>
+</p>

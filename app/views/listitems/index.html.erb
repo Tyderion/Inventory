@@ -1,0 +1,21 @@
+<% title "Listitems" %>
+
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>List</th>
+    <th>Item</th>
+  </tr>
+  <% for listitem in @listitems %>
+    <tr>
+      <td><%= listitem.amount %></td>
+      <td><%= listitem.list_id %></td>
+      <td><%= listitem.item_id %></td>
+      <td><%= link_to "Show", listitem %></td>
+      <td><%= link_to "Edit", edit_listitem_path(listitem) %></td>
+      <td><%= link_to "Destroy", listitem, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Listitem", new_listitem_path %></p>

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: listitems
+#
+#  id         :integer          not null, primary key
+#  amount     :integer
+#  list_id    :integer
+#  item_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  amount: 1
+  list_id: 1
+  item_id: 1
+
+two:
+  amount: 1
+  list_id: 1
+  item_id: 1
