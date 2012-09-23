@@ -1,16 +1,10 @@
-<%= form_for @listitem do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
-  </p>
-  <p>
-    <%= f.label :list_id %><br />
-    <%= f.number_field :list_id %>
-  </p>
-  <p>
-    <%= f.label :item_id %><br />
-    <%= f.number_field :item_id %>
-  </p>
-  <p><%= f.submit %></p>
+<%= semantic_form_for @listitem do |f| %>
+<%= f.inputs do %>
+  <% if @listitem.list_id.nil? %>
+    <%= f.input :list %>
+    <% end %>
+  <%= f.input :item %>
+  <%= f.input :amount %>
+  <% end %>
+<%= f.actions %>
 <% end %>

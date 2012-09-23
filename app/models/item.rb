@@ -13,4 +13,6 @@ class Item < ActiveRecord::Base
 
   has_many :Listitems
   has_many :lists, through: :Listitems
+
+  validates :name, presence: true
 end

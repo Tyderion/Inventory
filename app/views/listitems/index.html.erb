@@ -1,21 +1,38 @@
-<% title "Listitems" %>
-
-<table>
-  <tr>
-    <th>Amount</th>
-    <th>List</th>
-    <th>Item</th>
-  </tr>
-  <% for listitem in @listitems %>
+<%- model_class = Listitem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><%= listitem.amount %></td>
-      <td><%= listitem.list_id %></td>
-      <td><%= listitem.item_id %></td>
-      <td><%= link_to "Show", listitem %></td>
-      <td><%= link_to "Edit", edit_listitem_path(listitem) %></td>
-      <td><%= link_to "Destroy", listitem, :confirm => 'Are you sure?', :method => :delete %></td>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:list_id) %></th>
+      <th><%= model_class.human_attribute_name(:item_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @listitems.each do |listitem| %>
+      <tr>
+        <td><%= listitem.amount %></td>
+        <td><%= listitem.list_id %></td>
+        <td><%= listitem.item_id %></td>
+        <td><%=l listitem.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_listitem_path(listitem), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      listitem_path(listitem),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<p><%= link_to "New Listitem", new_listitem_path %></p>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_listitem_path,
+            :class => 'btn btn-primary' %>

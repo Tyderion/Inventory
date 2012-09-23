@@ -1,12 +1,50 @@
-<% title "List" %>
+<%- model_class = List -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @list.name %></dd>
+<table class="table table-bordered">
+  <thead>
+    <th>Name</th>
+    <th>Username</th>
+  </thead>
+  <tbody>
+<% @list.users.each do |item| %>
+  <td><%= user.name %></td>
+  <td><%= user.username %></td>
+<% end %>
+</tbody>
+</table>
+<table class="table table-bordered">
+  <thead>
+    <th>Name</th>
+    <th>Amount</th>
+  </thead>
+  <tbody>
+<% @list.Listitems.each do |item| %>
+  <td><%= Item.find(item.item_id).name %></td>
+  <td><%= item.amount %></td>
+<% end %>
+</tbody>
+</table>
 
-<p>
-  <%= link_to "Edit", edit_list_path(@list) %> |
-  <%= link_to "Destroy", @list, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", lists_path %>
-</p>
+<div> Add Items to list
+  <%= render partial: 'listitems/form' %>
+</div>
+
+
+</dl>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              lists_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_list_path(@list), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              list_path(@list),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

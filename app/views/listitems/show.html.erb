@@ -1,20 +1,25 @@
-<% title "Listitem" %>
+<%- model_class = Listitem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @listitem.amount %>
-</p>
-<p>
-  <strong>List:</strong>
-  <%= @listitem.list_id %>
-</p>
-<p>
-  <strong>Item:</strong>
-  <%= @listitem.item_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
+  <dd><%= @listitem.amount %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:list_id) %>:</strong></dt>
+  <dd><%= @listitem.list_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:item_id) %>:</strong></dt>
+  <dd><%= @listitem.item_id %></dd>
+</dl>
 
-<p>
-  <%= link_to "Edit", edit_listitem_path(@listitem) %> |
-  <%= link_to "Destroy", @listitem, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", listitems_path %>
-</p>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              listitems_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_listitem_path(@listitem), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              listitem_path(@listitem),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

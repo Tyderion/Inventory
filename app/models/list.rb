@@ -15,4 +15,6 @@ class List < ActiveRecord::Base
   has_many :items, through: :Listitems
 
   has_and_belongs_to_many :users
+
+  validates :name, presence: true
 end
