@@ -9,7 +9,7 @@ Inventory::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "home#index"
+  root :to => "lists#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
