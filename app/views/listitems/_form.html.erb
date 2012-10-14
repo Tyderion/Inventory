@@ -8,9 +8,11 @@
     <% if @list.nil? %>
     <%= f.input :item %>
     <% else %>
-  <%= f.input :item, collection: Item.all-@list.items %>
+  <%= f.input :item, as: :string, input_html: {id: "autocomplete_items", complete: "item_id"} %>
+  <%= f.input :item_id %>
   <% end %>
   <%= f.input :amount %>
+  <%= f.input :quota %>
   <% end %>
 <%= f.actions %>
 <% end %>

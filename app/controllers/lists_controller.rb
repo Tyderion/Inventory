@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  include ApplicationHelper
   def index
     @lists = List.paginate(:page => params[:page])
   end
@@ -7,6 +8,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @listitem = Listitem.new
     @listitem.list_id = @list.id
+    gon.autocomplete_items = create_autocomplete_hash Item.all-@list.items
   end
 
   def new
