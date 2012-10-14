@@ -1,3 +1,4 @@
+$ ->
   buttontoggle = (element, name) ->
     $(".togglebutton", element).css "border", "5px solid transparent"
     if $(name).is(":visible")
@@ -9,8 +10,7 @@
       $(".togglebutton", element).css "margin-top", "10px"
       $(".togglebutton", element).css "margin-right", "2px"
     $(name).toggle()
-  $(".toggle_user").click ->
+  $(".span9").on "click", ".toggle_user", (event) ->
     buttontoggle this, ".toggled_user"
-
-  $(".toggle_list").click ->
-    buttontoggle this, ".toggled_list"
+  $(".span9").on "click", ".toggle_list", (event) ->
+      buttontoggle this, ".toggled_list"

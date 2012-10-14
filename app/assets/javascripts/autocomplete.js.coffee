@@ -17,3 +17,4 @@
         $(this).autocomplete "search", "" 
       else
         $(this).autocomplete "search", @value
+
