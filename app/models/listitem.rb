@@ -8,10 +8,11 @@
 #  item_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  quota      :integer
 #
 
 class Listitem < ActiveRecord::Base
-  attr_accessible :amount, :list_id, :item_id
+  attr_accessible :amount, :list_id, :item_id, :quota
 
   belongs_to :list
   belongs_to :item

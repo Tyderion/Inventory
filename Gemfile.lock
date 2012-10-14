@@ -58,12 +58,18 @@ GEM
     formtastic-bootstrap (2.0.0)
       formtastic (~> 2.2)
       formtastic-bootstrap
+    gon (4.0.0)
+      actionpack (>= 2.3.0)
+      json
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.2)
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
+    jquery-ui-rails (2.0.0)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.5)
     less (2.2.2)
       commonjs (~> 0.2.6)
@@ -162,7 +168,9 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   formtastic-bootstrap
+  gon
   jquery-rails
+  jquery-ui-rails
   linecache19 (= 0.5.13)
   mocha
   mysql2

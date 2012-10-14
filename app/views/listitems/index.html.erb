@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:amount) %></th>
       <th><%= model_class.human_attribute_name(:list_id) %></th>
       <th><%= model_class.human_attribute_name(:item_id) %></th>
+      <th><%= model_class.human_attribute_name(:quota) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -16,8 +17,9 @@
     <% @listitems.each do |listitem| %>
       <tr>
         <td><%= listitem.amount %></td>
-        <td><%= listitem.list_id %></td>
-        <td><%= listitem.item_id %></td>
+        <td><%= List.find(listitem.list_id).name %></td>
+        <td><%= Item.find(listitem.item_id).name %></td>
+        <td><%= listitem.quota %></td>
         <td><%=l listitem.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

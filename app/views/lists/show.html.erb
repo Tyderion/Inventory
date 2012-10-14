@@ -24,6 +24,7 @@
   <thead>
     <th>Name</th>
     <th>Amount</th>
+    <th>Quota</th>
   </thead>
   <tbody>
 <% @list.Listitems.each do |l_item| %>
@@ -33,10 +34,13 @@
     <%= link_to "+", change_amount_path(id: l_item.id, change: 1), class: "increment", method: :post %>
     <%= link_to "-", change_amount_path(id: l_item.id, change: -1), method: :post, class: "decrement"%>
   </td>
+  <td><%= l_item.quota %>
+    <%= link_to "Remove", listitem_path(l_item.id), method: :delete %></td>
   </tr>
 <% end %>
 </tbody>
 </table>
+
 
 <div class="toggle_list"><div class= "togglebutton"></div>
   Add Items to list </div> <!-- toggle -->
