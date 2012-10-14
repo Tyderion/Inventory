@@ -9,6 +9,11 @@ class ListsController < ApplicationController
     @listitem = Listitem.new
     @listitem.list_id = @list.id
     gon.autocomplete_items = create_autocomplete_hash Item.all-@list.items
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def new

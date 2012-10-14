@@ -15,7 +15,8 @@
     <% @lists.each do |list| %>
       <% if list.users.include? current_user %>
       <tr>
-        <td><%= link_to list.name, list_path(list)%></td>
+        <td><%= link_to list.name, list_path(list), remote: true
+%></td>
         <td><%=l list.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
